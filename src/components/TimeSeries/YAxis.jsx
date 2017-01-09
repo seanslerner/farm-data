@@ -15,10 +15,10 @@ class YAxis extends Component {
   }
 
   update_d3(props) {
-    let that = this;
-    that.yScale.domain(
-      d3.extent(props.data, function(d) { return d.close; }))
-               .rangeRound([
+    this.yScale.domain([
+      d3.min(props.data, (c) => d3.min(c.values, (d) => d.value )),
+      d3.max(props.data, (c) => d3.max(c.values, (d) => d.value ))
+    ]).rangeRound([
       props.height - props.topMargin - props.bottomMargin,
       0
     ]);

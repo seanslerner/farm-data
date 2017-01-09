@@ -6,7 +6,7 @@ class Line extends Component {
       <path
         transform={this.props.translate}
         d={this.props.d}
-        stroke="#079FD1"
+        stroke={this.props.stroke}
         fill="transparent"
         strokeWidth="2"
       >

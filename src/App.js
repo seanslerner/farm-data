@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TimeSeriesGraph url={process.env.PUBLIC_URL + 'alt-data.tsv'} />
+        <TimeSeriesGraph url={process.env.PUBLIC_URL + 'data.csv'} />
       </div>
     );
   }

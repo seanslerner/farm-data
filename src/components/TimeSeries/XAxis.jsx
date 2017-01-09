@@ -17,7 +17,7 @@ class XAxis extends Component {
   update_d3(props) {
     let that = this;
     that.xScale.domain(
-      d3.extent(props.data, function(d) { return d.date; }))
+      d3.extent(props.data[0].values, function(d) { return d.date; }))
                .rangeRound([0, props.width]);
   }
 

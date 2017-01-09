@@ -19,24 +19,32 @@ class TimeSeriesGraph extends Component {
     const that = this;
 
     const parseTime = d3.timeParse("%d-%b-%y");
-    d3.tsv(that.props.url, function(d) {
-      d.date = parseTime(d.date);
-      d.close = +d.close;
+    d3.csv(that.props.url, function(d) {
+      d.date     = parseTime(d.date);
+      d.current  = +d.current;
+      d.previous = +d.previous;
       return d;
     }, function(error, data) {
       if (error) {
         console.error(error);
         console.error(error.stack);
       } else {
-        that.setState({rawData: data});
-
+        let values = data.columns.slice(1).map(function(id) {
+          return {
+            id: id,
+            values: data.map(function(d) {
+              return {date: d.date, value: d[id]};
+            })
+          };
+        });
+        that.setState({rawData: values});
       }
     });
   }
 
   render() {
     let params = {
-      width: 910,
+      width: 900,
       height: 200,
       leftMargin: 40,
       topMargin: 20,
