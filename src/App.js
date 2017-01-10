@@ -8,6 +8,8 @@ class App extends Component {
     return (
       <div className="App">
         <TimeSeriesGraph url={process.env.PUBLIC_URL + 'data.csv'} />
+        <TimeSeriesGraph url={process.env.PUBLIC_URL + 'more-data.csv'} />
+        <TimeSeriesGraph url={process.env.PUBLIC_URL + 'even-more-data.csv'} />
       </div>
     );
   }

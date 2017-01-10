@@ -27,10 +27,23 @@ class XAxis extends Component {
   renderAxis() {
     let node = ReactDOM.findDOMNode(this);
 
+    let timeFormat = d3.timeFormat("%a");
+    if (this.props.data[0].values.length > 7) {
+      timeFormat = d3.timeFormat("%m/%d");
+    }
+
+    let ticks = d3.timeDay.every(1);
+    if (this.props.data[0].values.length > 7) {
+      ticks = d3.timeDay.every(2);
+    }
+    if (this.props.data[0].values.length > 14) {
+      ticks = d3.timeWeek.every(1);
+    }
+
     d3.select(node).call(
       d3.axisBottom(this.xScale)
-        .ticks(d3.timeDay.every(1))
-        .tickFormat(d3.timeFormat("%a"))
+        .ticks(ticks)
+        .tickFormat(timeFormat)
         .tickSizeInner(0)
         .tickSizeOuter(0)
         .tickPadding(9)
