@@ -36,8 +36,6 @@ class YAxis extends Component {
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", "0.71em")
-      .style("text-anchor", "end")
-      .text("Price ($)");
   }
 
   render() {

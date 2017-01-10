@@ -44,8 +44,8 @@ class TimeSeriesGraph extends Component {
 
   render() {
     let params = {
-      width: 900,
-      height: 200,
+      width: 338,
+      height: 100,
       leftMargin: 40,
       topMargin: 20,
       bottomMargin: 30,

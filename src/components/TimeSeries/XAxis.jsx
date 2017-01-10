@@ -27,7 +27,14 @@ class XAxis extends Component {
   renderAxis() {
     let node = ReactDOM.findDOMNode(this);
 
-    d3.select(node).call(d3.axisBottom(this.xScale));
+    d3.select(node).call(
+      d3.axisBottom(this.xScale)
+        .ticks(d3.timeDay.every(1))
+        .tickFormat(d3.timeFormat("%a"))
+        .tickSizeInner(0)
+        .tickSizeOuter(0)
+        .tickPadding(9)
+    );
   }
 
   render() {

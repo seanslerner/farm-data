@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import YAxis from './YAxis';
 import XAxis from './XAxis';
 import Line from './Line';
 
@@ -41,7 +40,7 @@ class TimeSeries extends Component {
     if (id === 'current') {
       return "#079FD1";
     }
-    return "#CCCCCC";
+    return "#CDD6D9";
   }
 
   render() {
@@ -53,13 +52,12 @@ class TimeSeries extends Component {
       translate={lineTranslate}
       d={this.line(d.values)}
       stroke={this.strokeColor(d.id)}
-    />);
+    />).reverse();
     console.log(lines);
 
     return (
       <g className="timeseries" transform={translate}>
         {lines}
-        <YAxis {...this.props} />
         <XAxis {...this.props} />
       </g>
     );
